@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ürün Fiyatı Hesaplama</title>
+</head>
+<body>
+
+<h2>Ürün Fiyatı Hesaplama</h2>
+
+<form>
+  <label for="adet">Adet:</label>
+  <input type="number" id="adet" name="adet" min="1" value="1" onchange="calculateTotal()">
+  <br><br>
+  <label for="fiyat">Ürün Fiyatı:</label>
+  <input type="number" id="fiyat" name="fiyat" value="10" readonly>
+  <br><br>
+  <label for="toplam">Toplam Fiyat:</label>
+  <input type="text" id="toplam" name="toplam" readonly>
+</form>
+
+<script>
+function calculateTotal() {
+  var adet = document.getElementById("adet").value;
+  var fiyat = document.getElementById("fiyat").value;
+  var toplam = adet * fiyat;
+  document.getElementById("toplam").value = toplam;
+}
+</script>
+
+</body>
+</html>

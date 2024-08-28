@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <link rel="icon" href="img/favicon.ico" type="favicon" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIVERSAL BUILDING STORE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("img/abc.JPG");
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border-bottom: 2px solid blue;
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        .buttons button {
+            height: 50px;
+            margin-left: 10px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+
+        .metin {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .metin strong {
+            color: #333;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .product-box {
+            width: calc(33.33% - 20px);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .product-image {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-name {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .product-price {
+            margin-top: 5px;
+            color: blue;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .quantity input {
+            width: 50px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .buy-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 50px;
+            border-radius: 5px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .cart-item-info .product-name {
+            font-weight: bold;
+        }
+
+        .total-price {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .remove-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="img/logomuz .png" class="logo" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">ANASAYFA</a></li>
+                <li><a href="hakkımızda.html">HAKKIMIZDA</a></li>
+                <li><a href="urunlerimiz.html">ÜRÜNLERİMİZ</a></li>
+                <li><a href="tedarikcigiris.html">TEDARİKÇİ GİRİŞİ</a></li>
+                <li><a href="iletisim.html">İLETİŞİM</a></li>
+            </ul>
+        </nav>
+        <div class="buttons">
+            <button><i class="fas fa-search"></i></button>
+            <button><a href="sepetim.html"><i class="fas fa-shopping-cart"></i></button>
+            <button><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="product-container">
+        </div>
+
+        <div class="cart-container">
+            <h2>Sepetim</h2>
+            <div class="cart-item" id="cart-item-1">
+                <img src="img/Çiroz.jpeg" alt="Çiroz">
+                <div class="cart-item-info">
+                    <div class="product-name">Çiroz</div>
+                    <div class="product-price" data-price="100">100 TL</div>
+                </div>
+                <div class="quantity">
+                    <input type="number" value="1" min="1" max="10" id="quantity-1" onchange="updateCartPrice(1)">
+                </div>
+                <button class="remove-button" onclick="removeCartItem(1)">Kaldır</button>
+            </div>
+            <div class="total-price" id="total-price">Toplam: 100 TL</div>
+        </div>
+    </div>
+
+    <script>
+        function updateCartPrice(cartItemId) {
+            const quantityElement = document.getElementById(`quantity-${cartItemId}`);
+            const priceElement = document.querySelector(`#cart-item-${cartItemId} .product-price`);
+            const unitPrice = parseFloat(priceElement.getAttribute("data-price"));
+            const quantity = parseInt(quantityElement.value);
+            const totalPrice = unitPrice * quantity;
+            priceElement.textContent = `${totalPrice} TL`;
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            let total = 0;
+            document.querySelectorAll('.cart-item').forEach(item => {
+                const priceElement = item.querySelector('.product-price');
+                const price = parseFloat(priceElement.textContent.replace(' TL', ''));
+                total += price;
+            });
+            document.getElementById('total-price').textContent = `Toplam: ${total} TL`;
+        }
+
+        function removeCartItem(cartItemId) {
+            const cartItem = document.getElementById(`cart-item-${cartItemId}`);
+            cartItem.remove();
+            updateTotalPrice();
+        }
+    </script>
+</body>
+
+</html>
